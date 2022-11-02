@@ -1,0 +1,19 @@
+fastapi
+uvicorn
+
+#for database
+sqlalchemy
+psycopg2-binary
+
+#for loading environment variables
+python-dotenv
+
+#for email validation
+pydantic[email]
+
+#hashing
+passlib[bcrypt]
+
+#for testing
+pytest
+requests
