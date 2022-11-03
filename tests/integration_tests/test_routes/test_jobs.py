@@ -1,0 +1,41 @@
+import json
+
+
+def test_create_job(client):
+    data = {
+        "title": "Statybininko",
+        "company": "test",
+        "company_url": "www.statybos.com",
+        "location": "USA,NY",
+        "description": "python",
+        "date_posted": "2022-11-05",
+    }
+    response = client.post("/v1/jobs/", json.dumps(data))
+    assert response.status_code == 200
+    assert response.json()["company"] == "test"
+    assert response.json()["description"] == "python"
+
+
+def test_get_job_successful_response(client):
+    data = {
+        "title": "Teacher",
+        "company": "doogle",
+        "company_url": "www.doogle.com",
+        "location": "USA,NY",
+        "description": "python",
+        "date_posted": "2022-03-20",
+    }
+    response = client.post("v1/jobs/", json.dumps(data))
+    response = response.json()
+    id = response["id"]
+
+    response = client.get("v1/jobs/{0}".format(id))
+    assert response.status_code == 200
+    assert response.json()["title"] == "Teacher"
+
+
+def test_get_job_not_found_response(client):
+    id = 999999
+
+    response = client.get("v1/jobs/{0}".format(id))
+    assert response.status_code == 404
