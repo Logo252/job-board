@@ -6,14 +6,9 @@ from fastapi import HTTPException
 from fastapi import status
 from sqlalchemy.orm import Session
 
-from db.repository.jobs import create_new_job
-from db.repository.jobs import delete_job_by_id
-from db.repository.jobs import list_active_jobs
-from db.repository.jobs import retrieve_job
-from db.repository.jobs import update_job_by_id
+from db.repository.jobs import create_new_job, delete_job_by_id, list_active_jobs, retrieve_job, update_job_by_id
 from db.session import get_db
-from schemas.jobs import JobCreate
-from schemas.jobs import ShowJob
+from schemas.jobs import JobCreate, ShowJob
 
 router = APIRouter()
 

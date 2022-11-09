@@ -11,3 +11,5 @@ def test_create_user(client):
     assert response.status_code == 200
     assert response.json()["email"] == "testuser@gmail.com"
     assert response.json()["is_active"] == True
+
+# Add tests for new routes here

@@ -50,6 +50,12 @@
 
 - From root directory execute: `pytest`
 
-### TO DO:
-
-1. Add tests
+### TO DO - Add tests for new user routes:
+1. CREATE is already implemented can be taken as an example. Also, jobs routes and their tests can be checked.
+2. Add new routes to be able to update, get and delete user. 
+PATCH /v1/users/{id}, GET /v1/users/{id} and DELETE /v1/users/{id}
+3. Add tests for these new routes. Test cases:
+- GET. Test if expected response is returned with existing/non-existing
+ user
+- PATCH. Test if expected response is returned after updating existing/non-existing user
+- DELETE. Test if expected response is returned after deleting existing/non-existing user

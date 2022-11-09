@@ -37,13 +37,13 @@ def test_get_job_successful_response(client):
 
 
 def test_get_job_not_found_response(client):
-    id = 999999
+    _id = 999999
 
-    response = client.get("v1/jobs/{0}".format(id))
+    response = client.get("v1/jobs/{0}".format(_id))
     assert response.status_code == 404
 
 
-def test_read_all_acive_jobs(client):
+def test_read_all_active_jobs(client):
     data = {
         "title": "Teacher",
         "company": "doogle",
