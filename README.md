@@ -26,6 +26,18 @@
 1. `dco exec db psql --username=user_one --dbname=job_board`
 2. `select * from table;`
 
+### Access PhAdmin to manage DB through web-based GUI
+1. Access `http://localhost:8080/`
+2. Fill username and password (from docker-compose.yml)
+      PGADMIN_DEFAULT_EMAIL
+      PGADMIN_DEFAULT_PASSWORD
+3. Create new server:
+- Add your server name
+- Host name/address: `postgress_container`
+- Port: `5432`
+- Username: `user_one`
+- Password: `user_one`
+
 ## REST API
 
 ### API docs
@@ -38,14 +50,6 @@
 
 - From root directory execute: `pytest`
 
-## Pre-commit
-
-### Configuration file
-- `.pre-commit-config.yaml`
-
-### Avoid pre-commit hook
-- `git commit -m "my message" --no-verify`
-
 ### TO DO:
 
-1. ?
+1. Add tests

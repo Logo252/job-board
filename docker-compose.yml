@@ -3,7 +3,7 @@ version: '3.8'
 services:
   db:
     container_name: postgres_container
-    image: postgres
+    image: postgres:14
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
@@ -11,7 +11,7 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
     ports:
-      - "6543:5432"
+      - "5432:5432"
   pgadmin:
     container_name: pgadmin4_container
     image: dpage/pgadmin4:5.5

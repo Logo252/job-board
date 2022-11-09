@@ -17,6 +17,3 @@ passlib[bcrypt]
 #for testing
 pytest
 requests
-
-# for  pre-commit hooks.
-pre-commit
