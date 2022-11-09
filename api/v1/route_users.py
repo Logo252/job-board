@@ -15,5 +15,4 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
     user = create_new_user(user=user, db=db)
     return user
 
-
 # TO DO:  Add changes here for additional routes to be able update and delete user
