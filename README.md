@@ -14,6 +14,16 @@
 
 `docker-compose up -d`
 
+### Run server:
+
+`uvicorn main:app --reload`
+
+## REST API
+
+### API docs
+
+- http://127.0.0.1:8000/docs
+
 ## Manage DB
 
 ### Ensure the table created:
@@ -37,12 +47,6 @@
 - Port: `5432`
 - Username: `user_one`
 - Password: `user_one`
-
-## REST API
-
-### API docs
-
-- http://127.0.0.1:8000/docs
 
 ## Tests
 
