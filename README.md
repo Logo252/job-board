@@ -43,7 +43,7 @@
       PGADMIN_DEFAULT_PASSWORD
 3. Create new server:
 - Add your server name
-- Host name/address: `postgress_container`
+- Host name/address: `postgres_container`
 - Port: `5432`
 - Username: `user_one`
 - Password: `user_one`
