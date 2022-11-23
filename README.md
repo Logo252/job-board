@@ -24,6 +24,12 @@
 
 - http://127.0.0.1:8000/docs
 
+## Job chat using websocket. 
+
+### Job chat endpoint. Accessing this endpoint in browser you will create new websocket connection and be able to send messages which will be broadcasted to all participants.
+
+- http://127.0.0.1:8000/job-chat
+
 ## Manage DB
 
 ### Ensure the table created:
