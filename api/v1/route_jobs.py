@@ -16,13 +16,14 @@ router = APIRouter()
 @router.post("/", response_model=ShowJob)
 def create_job(job: JobCreate, db: Session = Depends(get_db)):
     current_user = 1
-    job = create_new_job(job=job, db=db, owner_id=current_user)
+    job = create_new_job(job, db, owner_id=current_user)
     return job
 
 
 @router.get("/{id}", response_model=ShowJob)
 def read_job(id: int, db: Session = Depends(get_db)):
-    job = retrieve_job(id=id, db=db)
+    current_user = 1
+    job = retrieve_job(id, db, current_user)
     if not job:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
@@ -33,14 +34,15 @@ def read_job(id: int, db: Session = Depends(get_db)):
 
 @router.get("", response_model=List[ShowJob])  # new
 def read_jobs(db: Session = Depends(get_db)):
-    jobs = list_active_jobs(db=db)
+    current_user = 1
+    jobs = list_active_jobs(db, current_user)
     return jobs
 
 
 @router.put("/{id}")
 def update_job(id: int, job: JobCreate, db: Session = Depends(get_db)):
     current_user = 1
-    message = update_job_by_id(id=id, job=job, db=db, owner_id=current_user)
+    message = update_job_by_id(id, job, db, owner_id=current_user)
     if not message:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail=f"Job with id {id} not found"
@@ -50,8 +52,7 @@ def update_job(id: int, job: JobCreate, db: Session = Depends(get_db)):
 
 @router.delete("/{id}")
 def delete_job(id: int, db: Session = Depends(get_db)):
-    current_user_id = 1
-    message = delete_job_by_id(id=id, db=db, owner_id=current_user_id)
+    message = delete_job_by_id(id, db)
     if not message:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail=f"Job with id {id} not found"
