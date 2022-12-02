@@ -61,3 +61,10 @@ which will be broadcasted to all participants.
 ### Run tests
 
 - From root directory execute: `pytest`
+
+### TO DO
+- Update websocket functionality to be able to send personal messages to specific user by 
+specifying message (which won't be seen by others) and participant ID.
+- It will be needed to update job_chat.html:
+New form can be created for this in HTML and function in JS accordingly to handle passed message and participant ID.
+- It will be needed to update route_websocket.py, connection_manager.py files to handle new personal messages
