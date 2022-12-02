@@ -1,47 +1,14 @@
+import os
+
 from fastapi import APIRouter
 from fastapi.responses import HTMLResponse
 
 router = APIRouter()
 
+with open('{}/ui/html/job_chat.html'.format(os.getcwd()), 'r') as file:
+    html = file.read()
+
 
 @router.get("/job-chat")
 def display_job_board():
     return HTMLResponse(html)
-
-
-html = """
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Job chat</title>
-    </head>
-        <body>
-        <h1>Job Chat</h1>
-        <h2>Your ID: <span id="participant-id"></span></h2>
-        <form action="" onsubmit="sendMessage(event)">
-            <input type="text" id="messageText" autocomplete="off"/>
-            <button>Send</button>
-        </form>
-        <ul id='messages'>
-        </ul>
-        <script>
-            var participant_id = Date.now()
-            document.querySelector("#participant-id").textContent = participant_id;
-            var ws = new WebSocket(`ws://localhost:8000/ws/${participant_id}`);
-            ws.onmessage = function(event) {
-                var messages = document.getElementById('messages')
-                var message = document.createElement('li')
-                var content = document.createTextNode(event.data)
-                message.appendChild(content)
-                messages.appendChild(message)
-            };
-            function sendMessage(event) {
-                var input = document.getElementById("messageText")
-                ws.send(input.value)
-                input.value = ''
-                event.preventDefault()
-            }
-        </script>
-    </body>
-</html>
-"""

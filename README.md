@@ -16,7 +16,7 @@
 
 ### Run server:
 
-`uvicorn main:app --reload`
+- From root directory execute this command: `uvicorn main:app --reload`. Alternative way: `python3 main.py`
 
 ## REST API
 
@@ -26,7 +26,9 @@
 
 ## Job chat using websocket. 
 
-### Job chat endpoint. Accessing this endpoint in browser you will create new websocket connection and be able to send messages which will be broadcasted to all participants.
+### Job chat endpoint. 
+Accessing this endpoint in browser you will create new websocket connection and be able to send messages 
+which will be broadcasted to all participants.
 
 - http://127.0.0.1:8000/job-chat
 
