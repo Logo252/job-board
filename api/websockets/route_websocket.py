@@ -1,3 +1,4 @@
+import json
 import typing
 
 import starlette.status as status
@@ -29,7 +30,7 @@ class WebsocketRoute:
         except WebSocketDisconnect:
             # Handle client normal disconnect here
             manager.disconnect(self._websocket)
-            await manager.broadcast(f"Participant #{self._participant_id} left the chat")
+            await manager.broadcast(f"Participant #{self._participant_id} left the chat", self._websocket)
         except Exception as exc:
             # Handle other types of errors here
             close_code = status.WS_1011_INTERNAL_ERROR
@@ -39,7 +40,8 @@ class WebsocketRoute:
 
     async def _on_connect(self):
         # Handle your new connection here
-        await manager.connect(self._websocket)
+        await manager.connect(self._websocket, self._participant_id)
+        await manager.broadcast(f"Participant #{self._participant_id} joined the chat", self._websocket)
 
     async def _on_disconnect(self, close_code: int):
         # Handle client disconnect here
@@ -47,5 +49,17 @@ class WebsocketRoute:
 
     async def _on_receive(self, msg: typing.Any):
         # Handle participant messaging here
-        await manager.send_personal_message(f"You wrote: {msg}", self._websocket)
-        await manager.broadcast(f"Participant #{self._participant_id} says: {msg}")
+        message = json.loads(msg)
+        if 'participant' in message:
+            participant_websocket = manager.get_connection_by_participant_id(int(message['participant']))
+            if participant_websocket is not None:
+                await manager.send_message(
+                    message=message['message'],
+                    websocket=participant_websocket
+                )
+            else:
+                await manager.send_message("This participant does not exist", self._websocket)
+        else:
+            await manager.broadcast(message=message['message'], websocket=self._websocket)
+
+        await manager.send_message(f"You wrote: {message['message']}", self._websocket)

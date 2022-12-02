@@ -7,9 +7,18 @@
         <h1>Job Chat</h1>
         <h2>Your ID: <span id="participant-id"></span></h2>
         <form action="" onsubmit="sendMessage(event)">
-            <input type="text" id="messageText" autocomplete="off"/>
+            <input type="text" id="messageText" placeholder="message" autocomplete="off"/>
             <button>Send</button>
         </form>
+
+        <!-- TO DO: Add new form here in order to send message to specific participant -->
+
+        <form action="" onsubmit="sendPersonalMessage(event)">
+            <input type="text" id="personalMessageText" placeholder="message" autocomplete="off"/>
+            <input type="text" id="participant" placeholder="participant" autocomplete="off"/>
+            <button>Send personal message</button>
+        </form>
+
         <ul id='messages'>
         </ul>
         <script>
@@ -23,10 +32,32 @@
                 message.appendChild(content)
                 messages.appendChild(message)
             };
+
             function sendMessage(event) {
                 var input = document.getElementById("messageText")
-                ws.send(input.value)
+
+                ws.send(JSON.stringify({
+                    "message": input.value,
+                }));
+
                 input.value = ''
+                event.preventDefault()
+            }
+
+            // TO DO: Add new function to send personal message
+
+            function sendPersonalMessage(event) {
+                var personalMessageText = document.getElementById("personalMessageText")
+                var participant = document.getElementById("participant")
+
+                ws.send(JSON.stringify({
+                    "message": personalMessageText.value,
+                    "participant": participant.value
+                }));
+
+                personalMessageText.value = ''
+                participant.value = ''
+
                 event.preventDefault()
             }
         </script>
