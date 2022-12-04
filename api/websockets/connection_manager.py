@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Union
 
 from fastapi import WebSocket
 
@@ -25,7 +25,7 @@ class ConnectionManager:
             if connection['websocket'] != websocket:
                 await connection['websocket'].send_text(message)
 
-    def get_connection_by_participant_id(self, participant_id: int) -> WebSocket|None:
+    def get_connection_by_participant_id(self, participant_id: int) -> Union[WebSocket, None]:
         for connection in self.__active_connections:
             if connection['participant_id'] == participant_id:
                 return connection['websocket']
