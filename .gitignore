@@ -1,4 +1,2 @@
 test_db.db
-
-# Deta deployment
-/.deta
+test_db.cache_db

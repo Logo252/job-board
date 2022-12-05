@@ -1,22 +1,8 @@
 ## Setup up Job board
 
-### Virtual env:
-
-- Create: `python3 -m venv /path-to-new-virtual-environment`
-- Activate: `source /path-to-new-virtual-environment/bin/activate`
-- Deactivate: `deactivate`
-
-### Libraries
-
-- Install libraries from requirements.txt file: `pip install -r requirements.txt`
-
 ### Run containers:
 
-`docker-compose up -d`
-
-### Run server:
-
-- From root directory execute this command: `uvicorn main:app --reload`. Alternative way: `python3 main.py`
+`docker-compose up -d`. It will create API, DB, and DB admin containers
 
 ## REST API
 

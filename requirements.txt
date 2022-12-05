@@ -1,9 +1,11 @@
 fastapi
 uvicorn
+gunicorn
 
 #for database
 sqlalchemy
 psycopg2-binary
+psycopg2
 
 #for loading environment variables
 python-dotenv
