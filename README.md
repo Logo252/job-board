@@ -61,6 +61,7 @@ which will be broadcasted to all participants.
 - Build container image using Cloud Build: `gcloud builds submit --tag gcr.io/PROJECT-ID/api`
 - Deploy container image to Cloud Run: `gcloud run deploy --image gcr.io/PROJECT-ID/api --platform managed`
 - Check deployment: `gcloud run services list`
+
 ### TO DO
 - Update websocket functionality to be able to send personal messages to specific user by 
 specifying message (which won't be seen by others) and participant ID.
