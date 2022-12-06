@@ -1,5 +1,9 @@
 ## Setup up Job board
 
+### Create environment file
+- Copy `.env.example` to `.env`
+- Update the environment variables
+
 ### Run containers:
 
 `docker-compose up -d`. It will create API, DB, and DB admin containers
@@ -48,6 +52,15 @@ which will be broadcasted to all participants.
 
 - From root directory execute: `pytest`
 
+## Deployment
+
+### Deployment to GCP
+- Create GCP account
+- Install gcloud CLI: https://cloud.google.com/sdk/docs/install
+- Check project ID: `gcloud config get-value project`
+- Build container image using Cloud Build: `gcloud builds submit --tag gcr.io/PROJECT-ID/api`
+- Deploy container image to Cloud Run: `gcloud run deploy --image gcr.io/PROJECT-ID/api --platform managed`
+- Check deployment: `gcloud run services list`
 ### TO DO
 - Update websocket functionality to be able to send personal messages to specific user by 
 specifying message (which won't be seen by others) and participant ID.

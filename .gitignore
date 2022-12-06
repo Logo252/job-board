@@ -1,2 +1,3 @@
 test_db.db
 test_db.cache_db
+.env
