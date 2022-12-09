@@ -59,7 +59,8 @@ which will be broadcasted to all participants.
 - Install gcloud CLI: https://cloud.google.com/sdk/docs/install
 - Check project ID: `gcloud config get-value project`
 - Build container image using Cloud Build: `gcloud builds submit --tag gcr.io/PROJECT-ID/api`
-- Deploy container image to Cloud Run: `gcloud run deploy --image gcr.io/PROJECT-ID/api --platform managed`
+- Deploy container image to Cloud Run using env variables: 
+`gcloud run deploy --image gcr.io/PROJECT-ID/api --platform managed --update-env-vars POSTGRES_USER=quickstart-user,POSTGRES_PASSWORD=quickstart-password,POSTGRES_SERVER=34.69.206.97,POSTGRES_PORT=5432,POSTGRES_DB=job_board,POSTGRES_DB_DRIVER=postgresql+pg8000`
 - Check deployment: `gcloud run services list`
 
 ### TO DO
