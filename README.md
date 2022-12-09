@@ -57,6 +57,7 @@ which will be broadcasted to all participants.
 ### Deployment to GCP
 - Create GCP account
 - Install gcloud CLI: https://cloud.google.com/sdk/docs/install
+- `gcloud init`
 - Check project ID: `gcloud config get-value project`
 - Build container image using Cloud Build: `gcloud builds submit --tag gcr.io/PROJECT-ID/api`
 - Deploy container image to Cloud Run using env variables: 
@@ -64,8 +65,4 @@ which will be broadcasted to all participants.
 - Check deployment: `gcloud run services list`
 
 ### TO DO
-- Update websocket functionality to be able to send personal messages to specific user by 
-specifying message (which won't be seen by others) and participant ID.
-- It will be needed to update job_chat.html:
-New form can be created for this in HTML and function in JS accordingly to handle passed message and participant ID.
-- It will be needed to update route_websocket.py, connection_manager.py files to handle new personal messages
+- 
