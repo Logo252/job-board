@@ -60,8 +60,8 @@ which will be broadcasted to all participants.
 - `gcloud init`
 - Check project ID: `gcloud config get-value project`
 - Build container image using Cloud Build: `gcloud builds submit --tag gcr.io/PROJECT-ID/api`
-- Deploy container image to Cloud Run using env variables: 
-`gcloud run deploy --image gcr.io/PROJECT-ID/api --platform managed --update-env-vars POSTGRES_USER=quickstart-user,POSTGRES_PASSWORD=quickstart-password,POSTGRES_SERVER=34.69.206.97,POSTGRES_PORT=5432,POSTGRES_DB=job_board,POSTGRES_DB_DRIVER=postgresql+pg8000`
+- Deploy container image to Cloud Run using env variables (Take values from your .env file): 
+`gcloud run deploy --image gcr.io/PROJECT-ID/api --platform managed --update-env-vars POSTGRES_USER=x,POSTGRES_PASSWORD=x,POSTGRES_SERVER=x,POSTGRES_PORT=x,POSTGRES_DB=x,POSTGRES_DB_DRIVER=x`
 - Check deployment: `gcloud run services list`
 
 ### TO DO
