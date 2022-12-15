@@ -54,7 +54,7 @@ which will be broadcasted to all participants.
 
 ## Deployment
 
-### Deployment to GCP
+### Deployment to GCP (Deprecated)
 - Create GCP account
 - Install gcloud CLI: https://cloud.google.com/sdk/docs/install
 - `gcloud init`
@@ -63,6 +63,30 @@ which will be broadcasted to all participants.
 - Deploy container image to Cloud Run using env variables (Take values from your .env file): 
 `gcloud run deploy --image gcr.io/PROJECT-ID/api --platform managed --update-env-vars POSTGRES_USER=x,POSTGRES_PASSWORD=x,POSTGRES_SERVER=x,POSTGRES_PORT=x,POSTGRES_DB=x,POSTGRES_DB_DRIVER=x`
 - Check deployment: `gcloud run services list`
+
+### Deployment to http://fly.io/. `fly.toml` file is used for deployment.
+- Create account
+- Install flyctl CLI: https://fly.io/docs/getting-started/installing-flyctl/
+- `fly auth login`
+- `fly apps create`
+- Build app: `fly launch`
+- Add DB secrets to app:
+`fly secrets set POSTGRES_USER=x POSTGRES_PASSWORD=x  env_name=env_value`
+- Deploy app: `fly deploy`
+- Check deployment status: `fly status`
+- Check logs: `fly logs`
+- Check app details: `fly info`
+
+#### Certificates
+- Add certificates: `fly certs create app_name`
+- Check certificates: `fly certs show app_name`
+
+##### Postgres DB usage
+- Create Postgres DB: `fly databases create`
+- Access logs: ` fly postgres connect -a my-db-app`
+- Select all DBs: `type \`
+- Choose one DB: `\connect DB_NAME`
+- List tables: `\dt`
 
 ### TO DO
 - 
