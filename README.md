@@ -82,7 +82,7 @@ which will be broadcasted to all participants.
 - Check certificates: `fly certs show app_name`
 
 ##### Postgres DB usage
-- Create Postgres DB: `fly databases create`
+- Create Postgres DB: `fly postgres create`
 - Access logs: ` fly postgres connect -a my-db-app`
 - Select all DBs: `type \`
 - Choose one DB: `\connect DB_NAME`
