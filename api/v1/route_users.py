@@ -3,8 +3,9 @@ from fastapi import Depends
 from fastapi import HTTPException
 from fastapi import status
 from sqlalchemy.orm import Session
+from typing import List
 
-from db.repository.users import create_new_user, delete_user_by_id, retrieve_user_by_id, patch_user_by_id
+from db.repository.users import create_new_user, delete_user_by_id, retrieve_user_by_id, patch_user_by_id, list_users
 from db.session import get_db
 from schemas.users import UserCreate
 from schemas.users import UserPatch
@@ -18,6 +19,11 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
     user = create_new_user(user=user, db=db)
     return user
 
+
+@router.get("", response_model=List[UserShow])  # new
+def read_users(db: Session = Depends(get_db)):
+    users = list_users(db=db)
+    return users
 
 @router.get("/{id}", response_model=UserShow)
 def read_user(id: int, db: Session = Depends(get_db)):

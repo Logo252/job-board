@@ -15,4 +15,4 @@ RUN pip install -r requirements.txt
 # expose port 8000
 EXPOSE 8000
 
-CMD ["gunicorn", "main:app", "--bind", ":8000", "--workers", "2", "--worker-class", "uvicorn.workers.UvicornWorker"]
+CMD ["gunicorn", "main:app", "--bind", ":8000", "--workers", "2", "--worker-class", "uvicorn.workers.UvicornWorker", "--reload"]

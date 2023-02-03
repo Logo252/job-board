@@ -14,6 +14,25 @@
 
 - http://127.0.0.1:8000/docs
 
+### Setup authentication with Google
+1. Access to the Google Cloud Console with your Google account:
+2. Create a new project
+3. Go to the Credentials page
+4. Create a new OAuth client ID
+5. Consent screen:
+   - Then, set up the App Name, Support Email
+   - Add `userinfo.email` and `userinfo.profile`, and `openid` scopes.
+   - Add your email as a test user to start testing the application.
+6. After the consent screen is ready we can finally create the OAuth client id. 
+So we go to Credentials -> Create Credentials -> OAuth client ID.
+7. Set up the OAuth client ID:
+   - Application type: Web application
+   - Name: Job board
+   - Authorized JavaScript origins: For example, `http://127.0.0.1:8000`
+   - Authorized redirect URIs: http://127.0.0.1:8000/v1/auth
+8. After creating the client, it will pop a modal with your client ID and client secret
+9. Copy the client ID and client secret to the `.env` file in the `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` env variables.
+
 ## Job chat using websocket. 
 
 ### Job chat endpoint. 

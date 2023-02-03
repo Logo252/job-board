@@ -25,6 +25,14 @@ def retrieve_user_by_id(id: int, db: Session):
     return user
 
 
+def list_users(db: Session):
+    users = db.query(User).all()
+    return users
+
+def retrieve_user_by_email(email: str, db: Session):
+    return db.query(User).filter(User.email == email).first()
+
+
 def patch_user_by_id(id: int, user: UserPatch, db: Session):
     existing_user = db.query(User).filter(User.id == id)
     if not existing_user.first():
